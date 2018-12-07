@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
 const EditorWindow = (props) => {
+    console.log(props.content);
     return (
-        <div className="editor-window">
-            if wishes were horses, we'd all be eating steak
-        </div>
+
+        <textarea
+            className="form-control editor-window"
+            value={props.content}
+            rows="3"
+        />
     );
 
 }
