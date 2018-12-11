@@ -14,6 +14,7 @@ import About from './About';
 import Cats from './Cats';
 import NavBar from './NavBar';
 import OneCat from './OneCat';
+import Dogs from './Dogs';
 
 class App extends Component {
   constructor(props) {
@@ -50,10 +51,28 @@ class App extends Component {
           "human food",
           "peeing in your bed",
         ]
+      },
+      dogToys: {
+        Tilly: [
+          "people sleeping",
+          "poop"
+        ],
+        Judge: [
+          "food",
+          "the back of my eyelids"
+        ],
+        Bernie: [
+          "farts",
+          "snoring"
+        ]
       }
     }
   }
   render() {
+    const dogName = 'Judge';
+    // console.log(this.state.dogToys.dogName);
+    // console.log(this.state.dogToys[`${dogName}`]);
+    // console.log(this.state.dogToys[dogName]);
     return (
       <Router>
         <div className="App">
@@ -66,6 +85,8 @@ class App extends Component {
           <Route path="/catters/:catName" render={(props) => {
             return <OneCat toys={this.state.catToys} {...props} />
           }} />
+          <Route path="/doggos" component={Dogs} />
+
         </div>
       </Router>
     );
