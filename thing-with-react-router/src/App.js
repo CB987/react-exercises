@@ -15,6 +15,7 @@ import Cats from './Cats';
 import NavBar from './NavBar';
 import OneCat from './OneCat';
 import Dogs from './Dogs';
+import OneDog from './OneDog';
 
 class App extends Component {
   constructor(props) {
@@ -32,15 +33,16 @@ class App extends Component {
           'string',
           'popcorn',
         ],
-        "Bijou": [
-          "the dog",
-          "hobbits",
-        ],
         "Milla": [
           "cookies",
           "pants",
         ],
+        "Bijou": [
+          "the dog",
+          "hobbits",
+        ],
         "Hermione": [
+          "being a dog",
           "carcasses",
           "world domination",
           "being the boss of you"
@@ -52,24 +54,40 @@ class App extends Component {
           "peeing in your bed",
         ]
       },
-      dogToys: {
-        Tilly: [
-          "people sleeping",
-          "poop"
-        ],
-        Judge: [
-          "food",
-          "the back of my eyelids"
-        ],
-        Bernie: [
-          "farts",
-          "snoring"
-        ]
+      dogs: {
+        "Tilly": {
+          "owner": "Jodi",
+          "toys": [
+            "people sleeping",
+            "poop"
+          ]
+        },
+        "Judge": {
+          "owner": "Clare",
+          "toys": [
+            "food",
+            "the back of my eyelids"
+          ]
+        },
+        "Bernie": {
+          "owner": "Jodi",
+          "toys": [
+            "farts",
+            "snoring"
+          ]
+        },
+        "Gracie": {
+          "owner": "Jamie",
+          "toys": [
+            "my psychotic attitude",
+            "running away"
+          ]
+        }
       }
     }
   }
   render() {
-    const dogName = 'Judge';
+    // const dogName = 'Judge';
     // console.log(this.state.dogToys.dogName);
     // console.log(this.state.dogToys[`${dogName}`]);
     // console.log(this.state.dogToys[dogName]);
@@ -85,8 +103,14 @@ class App extends Component {
           <Route path="/catters/:catName" render={(props) => {
             return <OneCat toys={this.state.catToys} {...props} />
           }} />
-          <Route path="/doggos" component={Dogs} />
-
+          {/* <Route path="/doggos" component={Dogs} /> */}
+          <Route path="/doggos" render={(props) => {
+            return <Dogs dogList={Object.keys(this.state.dogs)} {...props} />
+          }} />
+          {/* <Route path="/doggos/:dogName" component={OneDog} /> */}
+          <Route path="/doggos/:dogName" render={(props) => {
+            return (<OneDog dogInfo={this.state.dogs} {...props} />);
+          }} />
         </div>
       </Router>
     );

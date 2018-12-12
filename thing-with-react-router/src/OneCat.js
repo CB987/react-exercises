@@ -7,6 +7,7 @@ const OneCat = (props) => {
     return (
         <div>
             <h2>{catName}</h2>
+            <h2>My fave things are:</h2>
             <ul>
                 {myToys.map((toy) => {
                     return <li>{toy}</li>
